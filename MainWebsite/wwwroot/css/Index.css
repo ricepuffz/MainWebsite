@@ -54,6 +54,14 @@
     margin-right: 12px;
     text-decoration: underline;
     cursor: pointer;
+    opacity: 1;
+    -webkit-transition: opacity ease 0.2s;
+    transition: opacity ease 0.2s;
+}
+
+.disabled-link {
+    opacity: 0.4!important;
+    cursor: default;
 }
 
 .white {

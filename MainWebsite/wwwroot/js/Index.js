@@ -17,8 +17,12 @@ function applyQuote(fragments) {
     var offset = 0;
 
     function helper(i, curOffset) {
+        app.quotesLoading++;
         setTimeout(() => {
             app.quoteFragments[i - curOffset].active = true;
+            setTimeout(() => {
+                app.quotesLoading--;
+            }, 1000);
         }, 2000 * (i - curOffset) + 50);
     }
 
@@ -36,6 +40,8 @@ function applyQuote(fragments) {
 }
 
 function newQuote() {
+    app.retrievingNewQuote = true;
+
     $.ajax({
         type: "GET",
         url: "api/quote/retrievequote",
@@ -44,13 +50,30 @@ function newQuote() {
         },
         error: function () {
             console.error("Failed to retrieve quote!");
+        },
+        complete: function () {
+            app.retrievingNewQuote = false;
         }
     });
+}
+
+function newQuoteClick() {
+    if (app.newQuoteTimeout || app.quotesLoading != 0 || app.retrievingNewQuote)
+        return;
+
+    app.newQuoteTimeout = true;
+    setTimeout(() => {
+        app.newQuoteTimeout = false;
+    }, 3000);
+    disappear(newQuote);
 }
 
 var app = new Vue({
     el: '#app',
     data: {
-        quoteFragments: []
+        quoteFragments: [],
+        quotesLoading: 0,
+        newQuoteTimeout: false,
+        retrievingNewQuote: false
     }
 });

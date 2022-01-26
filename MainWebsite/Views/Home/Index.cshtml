@@ -8,8 +8,11 @@
     <script src="~/js/Index.js"></script>
 }
 
-<a class="link" href="//spacemerchthing.nbulla.com/api/test/test">API Test</a>
-<a class="link" onclick="disappear(newQuote)">New Quote!</a>
+<a class="link unselectable"
+   href="//spacemerchthing.nbulla.com/api/test/test">API Test</a>
+<a class="link unselectable"
+   v-bind:class="{ 'disabled-link': newQuoteTimeout || quotesLoading != 0 || retrievingNewQuote }"
+   onclick="newQuoteClick()">New Quote!</a>
 <div class="center">
     <template v-for="fragment in quoteFragments">
         <h1 class="cool-text unselectable"
