@@ -29,11 +29,12 @@
 }
 
 .cool-text {
-    color: white;
+    color: black;
     font-family: monospace;
     text-align: center;
     font-size: 35px;
     inline-size: 80vw;
+    transition: color ease 2s;
 }
 
 .unselectable {
@@ -50,7 +51,6 @@
     cursor: pointer;
 }
 
-#quotetext {
-    opacity: 0;
-    transition: opacity 2s ease-in-out;
+.white {
+    color: white;
 }

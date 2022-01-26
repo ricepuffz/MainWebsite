@@ -10,4 +10,10 @@
 
 <a class="link" href="//spacemerchthing.nbulla.com/api/test/test">API Test</a>
 <a class="link" onclick="disappear(newQuote)">New Quote!</a>
-<h1 id="quotetext" class="center cool-text unselectable" style="white-space: pre-line;"></h1>
+<div class="center">
+    <template v-for="fragment in quoteFragments">
+        <h1 class="cool-text unselectable"
+            v-bind:class="{ white: fragment.active }"
+            style="white-space: pre-line;">{{ fragment.text }}</h1>
+    </template>
+</div>

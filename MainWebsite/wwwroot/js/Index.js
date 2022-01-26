@@ -3,17 +3,30 @@
 });
 
 function disappear(callback) {
-    document.getElementById("quotetext").style.opacity = 0;
+    for (var i = 0; i < app.quoteFragments.length; i++) {
+        app.quoteFragments[i].active = false;
+    }
+
     setTimeout(() => {
+        app.quoteFragments = [];
         callback();
     }, 2000)
 }
 
 function applyQuote(fragments) {
-    var quotetext = document.getElementById("quotetext");
+    function helper(i) {
+        setTimeout(() => {
+            app.quoteFragments[i].active = true;
+        }, 2000 * i);
+    }
 
-    quotetext.innerHTML = fragments[0];
-    quotetext.style.opacity = 1;
+    for (var i = 0; i < fragments.length; i++) {
+        app.quoteFragments.push({
+            "text": fragments[i],
+            "active": false
+        });
+        helper(i);
+    }
 }
 
 function newQuote() {
@@ -28,3 +41,10 @@ function newQuote() {
         }
     });
 }
+
+var app = new Vue({
+    el: '#app',
+    data: {
+        quoteFragments: []
+    }
+});
