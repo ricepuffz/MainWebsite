@@ -1,0 +1,56 @@
+﻿body {
+    background-color: black;
+    overflow: hidden;
+}
+
+.vertical-center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.horizontal-center {
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+
+.center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.cool-text {
+    color: white;
+    font-family: monospace;
+    text-align: center;
+    font-size: 35px;
+    inline-size: 80vw;
+}
+
+.unselectable {
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.link {
+    color: white;
+    font-family: monospace;
+    font-size: 16px;
+    margin-right: 12px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#quotetext {
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+}
