@@ -14,18 +14,24 @@ function disappear(callback) {
 }
 
 function applyQuote(fragments) {
-    function helper(i) {
+    var offset = 0;
+
+    function helper(i, curOffset) {
         setTimeout(() => {
-            app.quoteFragments[i].active = true;
-        }, 2000 * i);
+            app.quoteFragments[i - curOffset].active = true;
+        }, 2000 * (i - curOffset));
     }
 
     for (var i = 0; i < fragments.length; i++) {
-        app.quoteFragments.push({
-            "text": fragments[i],
-            "active": false
-        });
-        helper(i);
+        if (fragments[i].length <= 100) {
+            app.quoteFragments.push({
+                "text": fragments[i],
+                "active": false
+            });
+            helper(i, offset);
+        } else {
+            offset++;
+        }
     }
 }
 
