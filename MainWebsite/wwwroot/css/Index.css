@@ -35,7 +35,7 @@
     color: black;
     font-family: monospace;
     text-align: center;
-    font-size: 35px;
+    font-size: 5vmin;
     inline-size: 80vw;
     -webkit-transition: color ease 2s;
     transition: color ease 2s;
