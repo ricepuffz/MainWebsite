@@ -19,7 +19,7 @@ function applyQuote(fragments) {
     function helper(i, curOffset) {
         setTimeout(() => {
             app.quoteFragments[i - curOffset].active = true;
-        }, 2000 * (i - curOffset));
+        }, 2000 * (i - curOffset) + 50);
     }
 
     for (var i = 0; i < fragments.length; i++) {
